@@ -41,7 +41,7 @@ public class CreateCategoryServlet extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             request.setAttribute("message", "New category created successfully!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("../list_categories");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("list_categories");
             dispatcher.forward(request, response);
         }
     }

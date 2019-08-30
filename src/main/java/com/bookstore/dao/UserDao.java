@@ -63,5 +63,16 @@ public class UserDao extends JpaDao<User> implements GenericDao<User> {
         }
         return u;
     }
+    
+    public boolean checkLogin(String email, String password){
+        Query q = em.createNamedQuery("User.findByEmailPassword");
+        q.setParameter("email", email);
+        q.setParameter("password", password);
+        List<User> listOfUsers = q.getResultList();
+        if(listOfUsers.size() == 1){
+            return true;
+        }
+        return false;
+    }
 
 }

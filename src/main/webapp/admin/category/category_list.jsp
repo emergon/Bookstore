@@ -11,19 +11,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Manage Categories</title>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
     </head>
     <body>
         <jsp:directive.include file="../header.jsp"/>
 
         <div align="center">
-            <h1>Categories Management</h1>
+            <h2 class="pageheading">Categories Management</h2>
             <a href="category/category_form.jsp">Create New Category</a>
         </div>
 
         <!-- this is the message from create a new category-->
         <c:if test="${message != null}">
             <div align="center">
-                <h4><i>${message}</i></h4>
+                <h4 class="message">${message}</h4>
             </div>
         </c:if>
         <br/>

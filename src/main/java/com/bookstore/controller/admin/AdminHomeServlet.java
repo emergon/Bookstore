@@ -35,6 +35,11 @@ public class AdminHomeServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
+
 
     /**
      * Returns a short description of the servlet.
