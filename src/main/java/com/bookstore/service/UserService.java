@@ -55,5 +55,8 @@ public class UserService {
         udao.delete(id);
     }
     
+    public boolean login(String email, String password){
+        return udao.checkLogin(email, password);
+    }
 
 }

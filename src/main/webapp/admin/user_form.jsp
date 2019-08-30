@@ -19,11 +19,14 @@
             </c:if>
 
         </title>
+        <link rel="stylesheet" href="../css/style.css"/>
+        <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="../js/jquery.validate.min.js"></script>
     </head>
     <body>
         <jsp:directive.include file="header.jsp"/>
         <div align="center">
-            <h2>
+            <h2 class="pageheading">
                 <c:if test="${user != null}">
                     Edit User
                 </c:if>
@@ -34,14 +37,14 @@
         </div>
         <div align="center">
             <c:if test="${user != null}">
-                <form action="edit_user" method="post" onsubmit="return validateFormInput()">
+                <form action="edit_user" method="post" id="userform">
                     <input type="hidden" name="uid" value="${user.uid}">
             </c:if>
             <c:if test="${user == null}">
-                <form action="create_user" method="post" onsubmit="return validateFormInput()">
+                <form action="create_user" method="post" id="userform">
             </c:if>
 
-                    <table>
+                    <table class="form">
                         <tr>
                             <td align="right">Email:</td>
                             <td><input type="text" id="email" name="email" value="${user.email}" size="20"></td>
@@ -63,8 +66,8 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <input type="submit" value="Save">
-                                <input type="button" value="Cancel" onclick="javascript:history.go(-1);">
+                                <button>Save</button>&nbsp;&nbsp;
+                                <button onclick="javascript:history.go(-1);">Cancel</button>
                             </td>
                         </tr>
 
@@ -76,6 +79,28 @@
     </body>
 
     <script type="text/javascript">
+        $(document).ready(function(){
+            $("#userform").validate({
+                rules:{
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    lname: "required",
+                    fname: "required",
+                    password: "required"
+                },
+                messages:{
+                    email: {
+                        required: "Please enter email",
+                        email: "Please enter a valid email address"
+                    },
+                    lname: "Please enter last name",
+                    fname: "Please enter first name",
+                    password: "Please enter password"
+                }
+            });
+        });
         function validateFormInput() {
             var fieldEmail = document.getElementById("email");
             var fieldLname = document.getElementById("lname");

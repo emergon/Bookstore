@@ -15,6 +15,7 @@
         <%@include file="header.jsp" %>
         <br/><br/>
         <div align="center">
+            <a href="admin/login.jsp">Admin</a>
             <h3>main content</h3>
             <h2>New Books:</h2>
             <h2>Best-Selling Books:</h2>

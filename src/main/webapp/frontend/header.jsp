@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div align="center">
     <div>
         <img src="images/bookstore-logo.jpg" width="200" height="100"/>
@@ -11,12 +12,13 @@
         <a href="view_cart">Cart</a>
     </div>
     <div>
-        <a href="">Business</a> |
-        <a href="">Health</a> |
-        <a href="">Marketing</a> |
-        <a href="">Programming</a> |
-        <a href="">Technology</a> |
-        <a href="">Lifestyle</a> |
-        <a href="">History</a>
+        <c:forEach items="${listCategory}" var="category" varStatus="status">
+            <a href="view_category?id=${category.cid}">
+                <b><c:out value="${category.name}"/></b>
+            </a>
+                <c:if test="${not status.last}">
+                    &nbsp; |
+                </c:if>
+        </c:forEach>        
     </div>
 </div>

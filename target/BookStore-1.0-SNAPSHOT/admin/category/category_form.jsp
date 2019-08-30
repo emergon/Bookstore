@@ -19,11 +19,14 @@
             </c:if>
 
         </title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css"/>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.validate.min.js"></script>
     </head>
     <body>
         <jsp:directive.include file="../header.jsp"/>
         <div align="center">
-            <h2>
+            <h2 class="pageheading">
                 <c:if test="${category != null}">
                     Edit Category
                 </c:if>
@@ -34,14 +37,14 @@
         </div>
         <div align="center">
             <c:if test="${category != null}">
-                <form action="edit_category" method="post" onsubmit="return validateFormInput()">
+                <form action="${pageContext.request.contextPath}/admin/edit_category" method="post" id="categoryform">
                     <input type="hidden" name="cid" value="${category.cid}">
             </c:if>
             <c:if test="${category == null}">
-                <form action="create_category" method="post" onsubmit="return validateFormInput()">
+                <form action="${pageContext.request.contextPath}/admin/create_category" method="post" id="categoryform">
             </c:if>
 
-                    <table>
+                    <table class="form">
                         <tr>
                             <td align="right">Name:</td>
                             <td><input type="text" id="name" name="name" value="${category.name}" size="20"></td>
@@ -51,8 +54,8 @@
                         </tr>
                         <tr>
                             <td colspan="2" align="center">
-                                <input type="submit" value="Save">
-                                <input type="button" value="Cancel" onclick="javascript:history.go(-1);">
+                                <button>Save</button>&nbsp;&nbsp;
+                                <button onclick="javascript:history.go(-1);">Cancel</button>
                             </td>
                         </tr>
 
@@ -64,6 +67,16 @@
     </body>
 
     <script type="text/javascript">
+        $(document).ready(function(){
+            $("#categoryform").validate({
+                rules:{
+                    name: "required"
+                },
+                messages:{
+                    name: "Please enter a category name"
+                }
+            });
+        });
         function validateFormInput() {
             var fieldName = document.getElementById("name");
             

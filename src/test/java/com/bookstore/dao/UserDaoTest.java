@@ -14,7 +14,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -124,6 +126,22 @@ public class UserDaoTest {
 //        String email = "tasos@m.com";
 //        User u = udao.getUserByEmail(email);
 //        
+//    }
+    
+//    @Test
+//    public void testCheckLogin(){
+//        String email = "tasos@hotmail.com";
+//        String password = "1234";
+//        boolean exists = udao.checkLogin(email, password);
+//        assertTrue(exists);
+//    }
+//    
+//    @Test
+//    public void testCheckLoginFailed(){
+//        String email = "tasos3@hotmail.com";
+//        String password = "1234";
+//        boolean exists = udao.checkLogin(email, password);
+//        assertFalse(exists);
 //    }
     
 }

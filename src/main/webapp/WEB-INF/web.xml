@@ -3,6 +3,14 @@
     <welcome-file-list>
         <welcome-file/>
     </welcome-file-list>
+    <filter>
+        <filter-name>AdminLoginFilter</filter-name>
+        <filter-class>com.bookstore.controller.admin.AdminLoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AdminLoginFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>HomeServlet</servlet-name>
         <servlet-class>com.bookstore.controller.frontend.HomeServlet</servlet-class>
@@ -42,6 +50,14 @@
     <servlet>
         <servlet-name>DeleteCategoryServlet</servlet-name>
         <servlet-class>com.bookstore.controller.admin.category.DeleteCategoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <servlet-class>com.bookstore.controller.admin.AdminLoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <servlet-class>com.bookstore.controller.admin.AdminLogoutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HomeServlet</servlet-name>
@@ -83,9 +99,26 @@
         <servlet-name>DeleteCategoryServlet</servlet-name>
         <url-pattern>/admin/delete_category</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLoginServlet</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogoutServlet</servlet-name>
+        <url-pattern>/admin/logout</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error/500.jsp</location>
+    </error-page>
 </web-app>
