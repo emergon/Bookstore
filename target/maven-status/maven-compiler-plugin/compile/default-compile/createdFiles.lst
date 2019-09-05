@@ -10,6 +10,7 @@ com/bookstore/service/UserService.class
 com/bookstore/entity/OrderDetails.class
 com/bookstore/controller/admin/category/CreateCategoryServlet.class
 com/bookstore/entity/Book.class
+com/bookstore/dao/BookDao.class
 com/bookstore/dao/GenericDao.class
 com/bookstore/entity/Review.class
 com/bookstore/controller/admin/AdminLoginFilter.class

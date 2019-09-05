@@ -1,3 +1,4 @@
-com/bookstore/dao/UserDaoTest.class
 com/bookstore/entity/UserTest.class
+com/bookstore/dao/UserDaoTest.class
+com/bookstore/dao/BookDaoTest.class
 com/bookstore/dao/CategoryDaoTest.class
