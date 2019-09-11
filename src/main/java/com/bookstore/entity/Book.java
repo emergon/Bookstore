@@ -6,6 +6,7 @@
 package com.bookstore.entity;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -24,6 +25,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "book")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+    @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b ORDER BY b.title")
     , @NamedQuery(name = "Book.countAll", query = "SELECT COUNT(*) FROM Book b")
     , @NamedQuery(name = "Book.findByBid", query = "SELECT b FROM Book b WHERE b.bid = :bid")
     , @NamedQuery(name = "Book.findByTitle", query = "SELECT b FROM Book b WHERE b.title = :title")
@@ -45,7 +47,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Book.findByIsbn", query = "SELECT b FROM Book b WHERE b.isbn = :isbn")
     , @NamedQuery(name = "Book.findByPrice", query = "SELECT b FROM Book b WHERE b.price = :price")
     , @NamedQuery(name = "Book.findByPublishDate", query = "SELECT b FROM Book b WHERE b.publishDate = :publishDate")
-    , @NamedQuery(name = "Book.findByLastUpdated", query = "SELECT b FROM Book b WHERE b.lastUpdated = :lastUpdated")})
+    , @NamedQuery(name = "Book.findByLastUpdated", query = "SELECT b FROM Book b WHERE b.lastUpdated = :lastUpdated")
+    , @NamedQuery(name = "Book.findByCategory", query = "SELECT b FROM Book b WHERE b.cid = :category")})
 public class Book implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -101,7 +104,9 @@ public class Book implements Serializable {
     private Collection<OrderDetails> orderDetailsCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bid")
     private Collection<Review> reviewCollection;
-
+//    @Transient
+//    private String base64Image;
+    
     public Book() {
     }
 
@@ -121,6 +126,17 @@ public class Book implements Serializable {
         this.image = image;
     }
 
+    public Book(String title, String description, String author, String isbn, float price, Date publishDate, byte[] image, Category cid) {
+        this.title = title;
+        this.description = description;
+        this.author = author;
+        this.isbn = isbn;
+        this.price = price;
+        this.publishDate = publishDate;
+        this.image = image;
+        this.cid = cid;
+    }
+    
     public Integer getBid() {
         return bid;
     }
@@ -234,6 +250,17 @@ public class Book implements Serializable {
     public void setImage(byte[] image) {
         this.image = image;
     }
+    
+    //@Transient
+    public String getBase64Image(){
+        return Base64.getEncoder().encodeToString(this.image);
+//        this.base64Image = return Base64.getEncoder().encodeToString(this.image);
+//        return this.base64Image;
+    }
+//    @Transient
+//    public void setBase64Image(String base64Image){
+//        this.base64Image = base64Image;
+//    }
 
     @XmlTransient
     public Collection<Review> getReviewCollection() {

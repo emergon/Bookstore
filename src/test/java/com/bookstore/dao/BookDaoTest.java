@@ -6,6 +6,7 @@
 package com.bookstore.dao;
 
 import com.bookstore.entity.Book;
+import com.bookstore.entity.Category;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -114,12 +115,12 @@ public class BookDaoTest {
 //        assertTrue(true);
 //    }
 
-    @Test
-    public void testFindByTitle(){
-        String title = "Effective Java";
-        Book book = bdao.findByTitle(title);
-        assertNotNull(book);
-    }
+//    @Test
+//    public void testFindByTitle(){
+//        String title = "Effective Java";
+//        Book book = bdao.findByTitle(title);
+//        assertNotNull(book);
+//    }
     
     /**
      * Test of listAll method, of class BookDao.
@@ -133,10 +134,18 @@ public class BookDaoTest {
     /**
      * Test of count method, of class BookDao.
      */
-    @Test
-    public void testCount() {
-        long numberOfBooks = bdao.count();
-        assertEquals(numberOfBooks, 1);
-    }
+//    @Test
+//    public void testCount() {
+//        long numberOfBooks = bdao.count();
+//        assertEquals(numberOfBooks, 1);
+//    }
+    
+//    @Test
+//    public void testFindByCategory(){
+//        Category c = new Category(5);
+//        List<Book> listOfBooks = bdao.findByCategory(c);
+//        assertTrue(listOfBooks.size()>1);
+//    }
+    
     
 }

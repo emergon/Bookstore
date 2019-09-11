@@ -6,6 +6,7 @@
 package com.bookstore.dao;
 
 import com.bookstore.entity.Book;
+import com.bookstore.entity.Category;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -56,7 +57,13 @@ public class BookDao extends JpaDao<Book> implements GenericDao<Book> {
             return resultList.get(0);
         }
         return null;
-
+    }
+    
+    public List<Book> findByCategory(Category category){
+        Query q = em.createNamedQuery("Book.findByCategory");
+        q.setParameter("category", category);
+        List<Book> resultList = q.getResultList();
+        return resultList;
     }
 
     @Override
