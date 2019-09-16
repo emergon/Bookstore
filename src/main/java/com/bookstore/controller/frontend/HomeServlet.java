@@ -37,11 +37,11 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CategoryService categoryService = new CategoryService();
+        //CategoryService categoryService = new CategoryService();
         BookService bookService = new BookService();
         List<Book> newBooks = bookService.getNewBooks();
-        List<Category> listCategory = categoryService.listAll();
-        request.setAttribute("listCategory", listCategory);
+        //List<Category> listCategory = categoryService.listAll();
+        //request.setAttribute("listCategory", listCategory);
         request.setAttribute("newBooks", newBooks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("frontend/index.jsp");
         dispatcher.forward(request, response);

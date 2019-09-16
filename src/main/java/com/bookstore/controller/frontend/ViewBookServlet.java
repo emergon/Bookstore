@@ -46,8 +46,8 @@ public class ViewBookServlet extends HttpServlet {
             request.setAttribute("message", message);
         } else {
             destPage = "frontend/book_detail.jsp";
-            List<Category> listCategory = service.listCategories();
-            request.setAttribute("listCategory", listCategory);
+            //List<Category> listCategory = service.listCategories();
+            //request.setAttribute("listCategory", listCategory);
             request.setAttribute("book", book);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);

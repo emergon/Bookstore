@@ -37,7 +37,7 @@ public class ViewBooksByCategoryServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         BookService service = new BookService();
-        List<Category> listCategory = service.listCategories();
+        //List<Category> listCategory = service.listCategories();
         Integer categoryId = Integer.parseInt(request.getParameter("id"));
         List<Book> booksByCategory = service.getBooksByCategory(categoryId);
         if (booksByCategory == null) {
@@ -45,7 +45,7 @@ public class ViewBooksByCategoryServlet extends HttpServlet {
             request.setAttribute("message", message);
             request.getRequestDispatcher("frontend/message.jsp").forward(request, response);
         } else {
-            request.setAttribute("listCategory", listCategory);
+            //request.setAttribute("listCategory", listCategory);
             request.setAttribute("booksByCategory", booksByCategory);
             if (booksByCategory.isEmpty()) {
                 request.setAttribute("category", "There are no books for this category");
