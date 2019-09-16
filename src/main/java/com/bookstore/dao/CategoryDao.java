@@ -17,8 +17,7 @@ import javax.persistence.Query;
  */
 public class CategoryDao extends JpaDao<Category> implements GenericDao<Category>{
 
-    public CategoryDao(EntityManager em) {
-        super(em);
+    public CategoryDao() {
     }
 
     @Override
@@ -42,6 +41,7 @@ public class CategoryDao extends JpaDao<Category> implements GenericDao<Category
     }
     
     public Category getCategoryByName(String name){
+        EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Category.findByName");
         q.setParameter("name", name);
         Category c = null;
@@ -50,6 +50,8 @@ public class CategoryDao extends JpaDao<Category> implements GenericDao<Category
         } catch (NoResultException nre) {
             System.out.println("###CategoryDao:getCategoryByName=" + name + " NoResultException###");
             //c = null;
+        }finally{
+            closeEntityManager(em);
         }
         return c;
     }

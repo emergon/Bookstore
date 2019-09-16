@@ -17,8 +17,7 @@ import javax.persistence.Query;
  */
 public class UserDao extends JpaDao<User> implements GenericDao<User> {
 
-    public UserDao(EntityManager em) {
-        super(em);
+    public UserDao() {
     }
 
     @Override
@@ -52,6 +51,7 @@ public class UserDao extends JpaDao<User> implements GenericDao<User> {
     }
 
     public User getUserByEmail(String email) {
+        EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("User.findByEmail");
         q.setParameter("email", email);
         User u = null;
@@ -60,15 +60,19 @@ public class UserDao extends JpaDao<User> implements GenericDao<User> {
         } catch (NoResultException nre) {
             System.out.println("###UserDao:getUserByEmail=" + email + " NoResultException###");
             //u = null;
+        }finally{
+            closeEntityManager(em);
         }
         return u;
     }
     
     public boolean checkLogin(String email, String password){
+        EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("User.findByEmailPassword");
         q.setParameter("email", email);
         q.setParameter("password", password);
         List<User> listOfUsers = q.getResultList();
+        closeEntityManager(em);
         if(listOfUsers.size() == 1){
             return true;
         }

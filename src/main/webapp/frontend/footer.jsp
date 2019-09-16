@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center" style="clear:both">
     <h4>Copyright (C) 2019 by emergon</h4>
 </div>
 <div align="center">

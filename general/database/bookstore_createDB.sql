@@ -1,5 +1,5 @@
-CREATE SCHEMA bookstore;
-USE bookstore;
+-- CREATE SCHEMA bookstore;
+-- USE bookstore;
 
 CREATE TABLE customer
 (
@@ -92,7 +92,22 @@ CREATE TABLE `review` (
   UNIQUE KEY `review_id_UNIQUE` (`review_id`),
   KEY `book_fk_idx` (`book_id`),
   KEY `customer_fk_idx` (`customer_id`),
-  CONSTRAINT `book_fk` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `customer_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `book_fk` FOREIGN KEY (`book_id`) REFERENCES `book` (`bid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `customer_fk` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`cid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
+select * from category;
+insert into category (name) values ('Java');
+insert into category (name) values ('Frameworks');
+insert into category (name) values ('SQL');
+insert into category (name) values ('History');
+
+select * from user;
+insert into user (fname, lname, email, password) values ('Anastasios', 'Lelakis', 'tasos@hotmail.com', '1234');
+
+
+-- Queries 
+-- New Books
+select * from book order by publish_date desc limit 4;
+-- Search books by keyword
+select * from book where title like '%java%';

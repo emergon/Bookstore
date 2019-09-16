@@ -16,12 +16,10 @@ import javax.persistence.Persistence;
  * @author tasos
  */
 public class CategoryService {
-    private EntityManagerFactory emf;
     private CategoryDao cdao;
 
     public CategoryService() {
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        cdao = new CategoryDao(emf.createEntityManager());
+        cdao = new CategoryDao();
     }
     
     public List<Category> listAll(){

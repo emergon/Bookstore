@@ -29,30 +29,32 @@ import org.junit.Test;
  * @author tasos
  */
 public class UserDaoTest {
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
+//    private static EntityManagerFactory emf;
+//    private static EntityManager em;
+
     private static UserDao udao;
-    
+
     public UserDaoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        em = emf.createEntityManager();
-        udao = new UserDao(em);
+//        emf = Persistence.createEntityManagerFactory("BookStorePU");
+//        em = emf.createEntityManager();
+        udao = new UserDao();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
-        em.close();
-        emf.close();
+//        em.close();
+//        emf.close();
+        udao.closeEntityManagerFactory();
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -67,7 +69,6 @@ public class UserDaoTest {
 //        u = udao.create(u);
 //        assertTrue(u.getUid() > 0);
 //    }
-    
 //    @Test
 //    public void testUpdateUser(){
 //        
@@ -113,7 +114,6 @@ public class UserDaoTest {
 //        long expected = 4;
 //        assertEquals(expected, result);
 //    }
-    
 //    @Test
 //    public void testGetUserByEmail(){
 //        String email = "tasos@hotmail.com";
@@ -127,7 +127,6 @@ public class UserDaoTest {
 //        User u = udao.getUserByEmail(email);
 //        
 //    }
-    
 //    @Test
 //    public void testCheckLogin(){
 //        String email = "tasos@hotmail.com";
@@ -143,5 +142,4 @@ public class UserDaoTest {
 //        boolean exists = udao.checkLogin(email, password);
 //        assertFalse(exists);
 //    }
-    
 }

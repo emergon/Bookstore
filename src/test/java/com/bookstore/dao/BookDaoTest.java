@@ -25,24 +25,26 @@ import org.junit.Test;
  * @author anastasios
  */
 public class BookDaoTest {
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
+//    private static EntityManagerFactory emf;
+//    private static EntityManager em;
+
     private static BookDao bdao;
-    
+
     public BookDaoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        em = emf.createEntityManager();
-        bdao = new BookDao(em);
+//        emf = Persistence.createEntityManagerFactory("BookStorePU");
+//        em = emf.createEntityManager();
+        bdao = new BookDao();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
-        em.close();
-        emf.close();
+//        em.close();
+//        emf.close();
+        bdao.closeEntityManagerFactory();
     }
 
     /**
@@ -66,7 +68,6 @@ public class BookDaoTest {
 //        Book createdBook = bdao.create(b);
 //        assertTrue(createdBook.getBid() > 0);
 //    }
-
     /**
      * Test of get method, of class BookDao.
      */
@@ -76,7 +77,6 @@ public class BookDaoTest {
 //        Book book = bdao.get(bookId);
 //        assertNotNull(book);
 //    }
-
     /**
      * Test of update method, of class BookDao.
      */
@@ -99,7 +99,6 @@ public class BookDaoTest {
 //        Book updatedBook = bdao.update(b);
 //        assertEquals(updatedBook.getTitle(), "Effective Java 2");
 //    }
-
     /**
      * Test of delete method, of class BookDao.
      */
@@ -114,14 +113,12 @@ public class BookDaoTest {
 //        bdao.delete(bookId);
 //        assertTrue(true);
 //    }
-
 //    @Test
 //    public void testFindByTitle(){
 //        String title = "Effective Java";
 //        Book book = bdao.findByTitle(title);
 //        assertNotNull(book);
 //    }
-    
     /**
      * Test of listAll method, of class BookDao.
      */
@@ -130,7 +127,6 @@ public class BookDaoTest {
 //        List<Book> books = bdao.listAll();
 //        assertTrue(books.size()>0);
 //    }
-
     /**
      * Test of count method, of class BookDao.
      */
@@ -139,13 +135,19 @@ public class BookDaoTest {
 //        long numberOfBooks = bdao.count();
 //        assertEquals(numberOfBooks, 1);
 //    }
-    
 //    @Test
 //    public void testFindByCategory(){
 //        Category c = new Category(5);
 //        List<Book> listOfBooks = bdao.findByCategory(c);
 //        assertTrue(listOfBooks.size()>1);
 //    }
-    
-    
+//    @Test
+//    public void testSearchBook(){
+//        String keyword = "java";
+//        List<Book> listOfBooks = bdao.searchBook(keyword);
+//        for(Book b: listOfBooks){
+//            System.out.println(b.getTitle());
+//        }
+//        assertEquals(6, listOfBooks.size());
+//    }
 }

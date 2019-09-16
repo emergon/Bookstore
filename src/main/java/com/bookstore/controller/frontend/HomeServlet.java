@@ -5,7 +5,9 @@
  */
 package com.bookstore.controller.frontend;
 
+import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
+import com.bookstore.service.BookService;
 import com.bookstore.service.CategoryService;
 import java.io.IOException;
 import java.util.List;
@@ -36,8 +38,11 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CategoryService categoryService = new CategoryService();
+        BookService bookService = new BookService();
+        List<Book> newBooks = bookService.getNewBooks();
         List<Category> listCategory = categoryService.listAll();
         request.setAttribute("listCategory", listCategory);
+        request.setAttribute("newBooks", newBooks);
         RequestDispatcher dispatcher = request.getRequestDispatcher("frontend/index.jsp");
         dispatcher.forward(request, response);
     }

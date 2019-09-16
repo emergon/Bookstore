@@ -18,8 +18,7 @@ import javax.persistence.Query;
  */
 public class BookDao extends JpaDao<Book> implements GenericDao<Book> {
 
-    public BookDao(EntityManager em) {
-        super(em);
+    public BookDao() {
     }
 
     @Override
@@ -50,9 +49,11 @@ public class BookDao extends JpaDao<Book> implements GenericDao<Book> {
     }
 
     public Book findByTitle(String title) {
+        EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Book.findByTitle");
         q.setParameter("title", title);
         List<Book> resultList = q.getResultList();
+        closeEntityManager(em);
         if (!resultList.isEmpty()) {
             return resultList.get(0);
         }
@@ -60,15 +61,38 @@ public class BookDao extends JpaDao<Book> implements GenericDao<Book> {
     }
     
     public List<Book> findByCategory(Category category){
+        EntityManager em = getEntityManager();
         Query q = em.createNamedQuery("Book.findByCategory");
         q.setParameter("category", category);
         List<Book> resultList = q.getResultList();
+        closeEntityManager(em);
         return resultList;
     }
 
     @Override
     public long count() {
         return super.countWithNamedQuery("Book.countAll");
+    }
+    
+    public List<Book> findNewBooks(){
+        EntityManager em = getEntityManager();
+        String findNewBooksQuery = "select * from book order by publish_date desc limit 4";
+        Query q = em.createNativeQuery(findNewBooksQuery, Book.class);
+        //We can also use the below and not limit in the native query.
+        //q.setFirstResult(0);
+        //q.setMaxResults(4);
+        List<Book> newBooks = q.getResultList();
+        closeEntityManager(em);
+        return newBooks;
+    }
+    
+    public List<Book> searchBook(String keyword){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Book.findByKeyword");
+        q.setParameter("keyword", "%"+keyword+"%");
+        List<Book> books = q.getResultList();
+        closeEntityManager(em);
+        return books;
     }
 
 }

@@ -1,4 +1,5 @@
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/Category.java
+/home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/frontend/ViewBookServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/user/CreateUserServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/BookOrder.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/category/ListCategoryServlet.java
@@ -6,6 +7,7 @@
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/book/CreateBookServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/OrderDetailsPK.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/Book.java
+/home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/frontend/SearchBookServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/category/CreateCategoryServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/frontend/HomeServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/dao/UserDao.java
@@ -27,6 +29,7 @@
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/dao/CategoryDao.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/Customer.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/dao/BookDao.java
+/home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/frontend/ViewBooksByCategoryServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/category/DeleteCategoryServlet.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/entity/User.java
 /home/anastasios/NetBeansProjects/Bookstore/src/main/java/com/bookstore/controller/admin/user/ListUserServlet.java

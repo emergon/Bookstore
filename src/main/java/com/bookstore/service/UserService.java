@@ -16,12 +16,10 @@ import javax.persistence.Persistence;
  * @author tasos
  */
 public class UserService {
-    private EntityManagerFactory emf;
     private UserDao udao;
     
     public UserService(){
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        udao = new UserDao(emf.createEntityManager());
+        udao = new UserDao();
     }
     
     public List<User> listAll(){

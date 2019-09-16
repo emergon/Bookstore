@@ -6,6 +6,7 @@ com/bookstore/controller/admin/user/DeleteUserServlet.class
 com/bookstore/controller/admin/AdminLoginServlet.class
 com/bookstore/entity/BookOrder.class
 com/bookstore/controller/admin/book/DeleteBookServlet.class
+com/bookstore/controller/frontend/SearchBookServlet.class
 com/bookstore/controller/admin/category/ListCategoryServlet.class
 com/bookstore/service/UserService.class
 com/bookstore/entity/OrderDetails.class
@@ -19,10 +20,12 @@ com/bookstore/entity/Review.class
 com/bookstore/controller/admin/AdminLoginFilter.class
 com/bookstore/controller/frontend/HomeServlet.class
 com/bookstore/controller/admin/book/EditBookServlet.class
+com/bookstore/controller/frontend/ViewBookServlet.class
 com/bookstore/controller/admin/category/DeleteCategoryServlet.class
 com/bookstore/entity/User.class
 com/bookstore/entity/OrderDetailsPK.class
 com/bookstore/dao/JpaDao.class
+com/bookstore/controller/frontend/ViewBooksByCategoryServlet.class
 com/bookstore/controller/admin/AdminHomeServlet.class
 com/bookstore/controller/admin/category/EditCategoryServlet.class
 com/bookstore/dao/UserDao.class

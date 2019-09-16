@@ -11,45 +11,40 @@ import com.bookstore.entity.Book;
 import com.bookstore.entity.Category;
 import java.util.Date;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
  * @author anastasios
  */
 public class BookService {
-    private EntityManagerFactory emf;
+
     private BookDao bdao;
     private CategoryDao cdao;
-    
-    public BookService(){
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        EntityManager em = emf.createEntityManager();
-        bdao = new BookDao(em);
-        cdao = new CategoryDao(em);
+
+    public BookService() {
+        bdao = new BookDao();
+        cdao = new CategoryDao();
     }
-    
-    public List<Book> listBooks(){
+
+    public List<Book> listBooks() {
         return bdao.listAll();
     }
-    
-    public List<Category> listCategories(){
+
+    public List<Category> listCategories() {
         return cdao.listAll();
     }
-    
-    public Book getBookByTitle(String title){
+
+    public Book getBookByTitle(String title) {
         return bdao.findByTitle(title);
     }
-    
-    public Book create(String title, String description, String author, String isbn, float price, Date publishDate, byte[] image, Integer cid){
+
+    public Book create(String title, String description, String author, String isbn, float price, Date publishDate, byte[] image, Integer cid) {
         Category category = cdao.get(cid);
         Book newBook = new Book(title, description, author, isbn, price, publishDate, image, category);
         Book bookByTitle = getBookByTitle(newBook.getTitle());
-        if(bookByTitle == null){
+        if (bookByTitle == null) {
             return bdao.create(newBook);
-        }else{
+        } else {
             return null;
         }
     }
@@ -62,14 +57,14 @@ public class BookService {
     public Book update(Integer bookId, String title, String description, String author, String isbn, float price, Date publishDate, byte[] imageBytes, Integer categoryId) {
         Book editBook = bdao.get(bookId);
         Book bookByTitle = bdao.findByTitle(title);
-        if(!editBook.equals(bookByTitle)){
+        if (!editBook.equals(bookByTitle) && bookByTitle != null) {
             return null;
         }
         editBook.setTitle(title);
         editBook.setAuthor(author);
         editBook.setCid(cdao.get(categoryId));
         editBook.setDescription(description);
-        if(imageBytes != null){
+        if (imageBytes != null) {
             editBook.setImage(imageBytes);
         }
         editBook.setIsbn(isbn);
@@ -83,5 +78,25 @@ public class BookService {
         bdao.delete(bookId);
     }
 
-    
+    public List<Book> getBooksByCategory(Integer categoryId) {
+        Category category = cdao.get(categoryId);
+        if (category == null) {
+            return null;
+        }
+        List<Book> booksByCategory = bdao.findByCategory(category);
+        return booksByCategory;
+    }
+
+    public List<Book> getNewBooks() {
+        return bdao.findNewBooks();
+    }
+
+    public Book viewBookDetail(Integer bookId) {
+        return bdao.get(bookId);
+    }
+
+    public List<Book> search(String keyword) {
+        return bdao.searchBook(keyword);
+    }
+
 }

@@ -23,38 +23,40 @@ import static org.junit.Assert.*;
  * @author tasos
  */
 public class CategoryDaoTest {
-    private static EntityManagerFactory emf;
-    private static EntityManager em;
+//    private static EntityManagerFactory emf;
+//    private static EntityManager em;
+
     private static CategoryDao cdao;
-    
+
     public CategoryDaoTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
-        emf = Persistence.createEntityManagerFactory("BookStorePU");
-        em = emf.createEntityManager();
-        cdao = new CategoryDao(em);
+//        emf = Persistence.createEntityManagerFactory("BookStorePU");
+//        em = emf.createEntityManager();
+        cdao = new CategoryDao();
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
-        em.close();
-        emf.close();
+//        em.close();
+//        emf.close();
+        cdao.closeEntityManagerFactory();
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
 //    @Test
-//    public void testListAll(){
+//    public void testListAll() {
 //        List<Category> list = cdao.listAll();
-//        assertTrue(list.size()>0);
+//        assertTrue(list.size() > 0);
 //    }
 //    
 //    @Test
