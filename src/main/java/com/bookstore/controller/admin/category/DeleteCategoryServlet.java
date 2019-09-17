@@ -34,18 +34,30 @@ public class DeleteCategoryServlet extends HttpServlet {
             throws ServletException, IOException {
         int cid = Integer.parseInt(request.getParameter("cid"));
         CategoryService service = new CategoryService();
-        Category c = service.getCategoryById(cid);
-        if (c == null) {
-            String message = "Cannot delete category with ID:"+cid+"!";
-            request.setAttribute("message", message);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
-            dispatcher.forward(request, response);
+        String message = service.deleteCategory(cid);
+        String page;
+        if (message == null) {
+            message = "Cannot delete category with ID:" + cid + ". It does not exist!";
+            page = "message.jsp";
         } else {
-            service.deleteCategory(cid);
-            request.setAttribute("message", "Category deleted successfully!");
-            RequestDispatcher dispatcher = request.getRequestDispatcher("list_categories");
-            dispatcher.forward(request, response);
+            page = "list_categories";
         }
+        request.setAttribute("message", message);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(page);
+        dispatcher.forward(request, response);
+
+//        Category c = service.getCategoryById(cid);
+//        if (c == null) {
+//            String message = "Cannot delete category with ID:" + cid + "!";
+//            request.setAttribute("message", message);
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("message.jsp");
+//            dispatcher.forward(request, response);
+//        } else {
+//            service.deleteCategory(cid);
+//            request.setAttribute("message", "Category deleted successfully!");
+//            RequestDispatcher dispatcher = request.getRequestDispatcher("list_categories");
+//            dispatcher.forward(request, response);
+//        }
 
     }
 

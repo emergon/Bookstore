@@ -16,25 +16,26 @@
     <body>
         <%@include file="header.jsp" %>
         <br/><br/>
-        <div align="center">
+        <div class="center">
             <c:if test="${fn:length(books) == 0}">
                 <h2>No results for <i>"${keyword}"</i></h2>
             </c:if>
             <c:if test="${fn:length(books) > 0}">
                 <h2>Results for "${keyword}"</h2>
-                <div align="left" style="width: 70%; margin: 0 auto">
+                <div class="book_group">
                     
                     <c:forEach items="${books}" var="book">
                         <div>
-                            <div style="display: inline-block; margin: 20px; width: 10%">
-                                <div align="left">
+                            <div id="search_image">
+                                <div>
                                     <a href="view_book?bid=${book.bid}">
-                                        <img src="data:image/jpg;base64,${book.base64Image}" width="128" height="164">
+                                        <img class="book_small" 
+                                            src="data:image/jpg;base64,${book.base64Image}">
                                     </a>
                                 </div>
                             </div>
 
-                            <div style="display: inline-block; margin: 20px; vertical-align: top; width: 60%" align="left">
+                            <div id="search_description">
                                 <div>
                                     <h2>
                                         <a href="view_book?bid=${book.bid}">
@@ -49,7 +50,7 @@
                                 </div>
                             </div>
 
-                            <div style="display: inline-block; margin: 20px; vertical-align: top;">
+                            <div id="search_price">
                                 <h3><b>$${book.price}</b></h3>
                                 <h3><a>Add to cart</a></h3>
                             </div>

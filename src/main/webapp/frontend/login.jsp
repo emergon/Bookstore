@@ -13,7 +13,7 @@
     </head>
     <body>
        <%@include file="header.jsp" %>
-        <div align="center">
+        <div class="center">
             <h2>Please login:</h2>
             <form>
                 Email: <input type="text" size="10"><br/>

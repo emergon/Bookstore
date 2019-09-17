@@ -150,4 +150,11 @@ public class BookDaoTest {
 //        }
 //        assertEquals(6, listOfBooks.size());
 //    }
+    
+//    @Test
+//    public void testCountByCategory(){
+//        int category = 1;
+//        long count = bdao.countByCategory(category);
+//        assertEquals(6, count);
+//    }
 }

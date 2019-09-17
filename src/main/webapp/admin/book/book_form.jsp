@@ -26,6 +26,11 @@
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/js/richtext.min.css">
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.richtext.min.js"></script>
+        
     </head>
     <body>
         <jsp:directive.include file="../header.jsp"/>
@@ -120,11 +125,12 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#publishDate").datepicker();
+            $('#publishDate').datepicker();
+//            $('#description').richText();//does not work properly
             $("#image").change(function () {
                 showImageThumbnail(this);
             });
-            $("#bookform").validate({
+            $('#bookform').validate({
                 rules: {
                     category: "required",
                     title: "required",

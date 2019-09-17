@@ -15,15 +15,16 @@
     <body>
         <%@include file="header.jsp" %>
         <br/><br/>
-        <div align="center">
+        <div class="center">
             <h2>${category}</h2>
         </div>
-        <div align="center" style="width: 50%; margin: 0 auto">
+        <div class="book_group">
             <c:forEach items="${booksByCategory}" var="book">
                 <div style="float:left; display: inline-block; margin: 20px">
                     <div>
                         <a href="view_book?bid=${book.bid}">
-                            <img src="data:image/jpg;base64,${book.base64Image}" width="85" height="115">
+                            <img class="book_small" 
+                                src="data:image/jpg;base64,${book.base64Image}">
                         </a>
                     </div>
                     <div>

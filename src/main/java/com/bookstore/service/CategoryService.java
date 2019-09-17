@@ -5,6 +5,7 @@
  */
 package com.bookstore.service;
 
+import com.bookstore.dao.BookDao;
 import com.bookstore.dao.CategoryDao;
 import com.bookstore.entity.Category;
 import java.util.List;
@@ -50,8 +51,22 @@ public class CategoryService {
         
     }
     
-    public void deleteCategory(Object id){
-        cdao.delete(id);
+    public String deleteCategory(Object id){
+        BookDao bdao = new BookDao();
+        Category category = getCategoryById(id);
+        if(category == null){
+            return null;
+        }
+        long count = bdao.countByCategory((Integer)id);
+        String message;
+        if(count > 0){
+            message = "Category (ID:%d) cannot be deleted because it has %d books.";
+            message = String.format(message, id, count);
+        }else{
+            message = "Category deleted successfully!";
+            cdao.delete(id);
+        }
+        return message;
     }
     
 }

@@ -81,3 +81,72 @@ input{
     font-style: italic;
     margin: 5px;
 }
+
+div.center {
+    text-align: center;
+/*    margin: auto;
+    align-self: center;*/
+}
+
+div.book_group{
+    width: 50%; 
+    margin: 0 auto;
+}
+
+div.book{
+    display: inline-block;
+    margin: 20px;
+    text-align: center;
+}
+
+div.next_row{
+    clear: both;
+}
+
+table.book {
+    width: 80%;
+    border: 0;
+    /*display: inline-block;*/
+    /*margin: 20px;*/
+    margin: 0 auto;
+    /*border-width: 0px;*/
+}
+
+img.book_small{
+    width: 85px;
+    height: 115px;
+}
+img.book_large{
+    width: 240px;
+    height: 300px;
+}
+
+#book_title{
+    font-size: x-large;
+    font-weight: bold;
+}
+#author{
+    font-size: large;
+    font-style: italic;
+}
+#description{
+    text-align: justify;
+    vertical-align: top;
+}
+#search_image{
+    display: inline-block; 
+    margin: 20px; 
+    width: 10%;
+}
+#search_description{
+    display: inline-block;
+    margin: 20px; 
+    vertical-align: top;
+    text-align: left;
+    width: 60%;
+}
+#search_price{
+    display: inline-block;
+    margin: 20px;
+    vertical-align: top;
+}

@@ -94,5 +94,14 @@ public class BookDao extends JpaDao<Book> implements GenericDao<Book> {
         closeEntityManager(em);
         return books;
     }
+    
+    public long countByCategory(Integer categoryId){
+        EntityManager em = getEntityManager();
+        Query q = em.createNamedQuery("Book.countByCategory");
+        q.setParameter("categoryId", categoryId);
+        long count = (long)q.getSingleResult();
+        closeEntityManager(em);
+        return count;
+    }
 
 }
