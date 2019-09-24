@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "customer")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c")
+    @NamedQuery(name = "Customer.findAll", query = "SELECT c FROM Customer c ORDER BY c.registerOn DESC")
+    , @NamedQuery(name = "Customer.countAll", query = "SELECT COUNT(c) FROM Customer c")
     , @NamedQuery(name = "Customer.findByCid", query = "SELECT c FROM Customer c WHERE c.cid = :cid")
     , @NamedQuery(name = "Customer.findByFname", query = "SELECT c FROM Customer c WHERE c.fname = :fname")
     , @NamedQuery(name = "Customer.findByLname", query = "SELECT c FROM Customer c WHERE c.lname = :lname")
@@ -116,6 +117,18 @@ public class Customer implements Serializable {
 
     public Customer(Integer cid) {
         this.cid = cid;
+    }
+
+    public Customer(String fname, String lname, String email, String password, String phone, String address, String zip, String country, String city) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.zip = zip;
+        this.country = country;
+        this.city = city;
     }
 
     public Customer(Integer cid, String fname, String lname, String email, String password, String phone, String address, String zip, String country, String city, Date registerOn) {
